@@ -13,7 +13,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: Colors.black87,
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: RadialGradient(
             colors: [Color.fromARGB(255, 234, 240, 188), Colors.white],
             center: Alignment.topLeft,
@@ -29,14 +29,14 @@ class _HomeState extends State<Home> {
                   width: MediaQuery.of(context).size.width * (80.0 / 100.0),
                   height: 300,
                   child: Card(
-                    margin: EdgeInsets.only(top: 40),
+                    margin: const EdgeInsets.only(top: 40),
                     color: Colors.black87,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          margin: EdgeInsets.all(30),
-                          child: Column(
+                          margin: const EdgeInsets.all(30),
+                          child: const Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -61,7 +61,7 @@ class _HomeState extends State<Home> {
                             ],
                           ),
                         ),
-                        Card(color: Colors.red)
+                        const Card(color: Colors.red)
                       ],
                     ),
                   ),

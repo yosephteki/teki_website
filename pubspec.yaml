@@ -60,6 +60,7 @@ flutter:
   assets:
     - assets/pexels-adrien-olichon-2387533.jpg
     - assets/teki-1.jpeg
+    - assets/data/experience.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

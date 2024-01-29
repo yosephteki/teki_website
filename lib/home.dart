@@ -33,7 +33,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       body: Column(
         children: [
-          // const Navigationbar(),
+          Container(child: isDekstop(context) ? Navigationbar() :null),
           const Title(),
           // FutureBuilder(
           //   future: loadJsonData(),
@@ -82,7 +82,7 @@ class _HomeState extends State<Home> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Column(
+                const Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     CircleAvatar(
@@ -103,13 +103,13 @@ class _HomeState extends State<Home> {
                         backgroundColor: Colors.black,
                       ),
                     ),
-                    Text(
+                    const Text(
                         softWrap: true,
                         textAlign: TextAlign.center,
                         "Xapiens\nTeknologi")
                   ],
                 ),
-                Column(
+                const Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     CircleAvatar(
@@ -121,7 +121,7 @@ class _HomeState extends State<Home> {
                         "Bank\nRakyat\nIndonesia")
                   ],
                 ),
-                Column(
+                const Column(
                   children: [
                     CircleAvatar(
                       backgroundColor: Colors.black,
@@ -144,7 +144,7 @@ class _HomeState extends State<Home> {
                   '$screenWidth',
                   style: const TextStyle(fontSize: 70),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 isDekstop(context)
@@ -402,52 +402,62 @@ class Navigationbar extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          width: screenWidth * (10.0 / 100.0),
-          color: Colors.red,
-        ),
-        Container(
-          margin: EdgeInsets.only(top: 15),
-          width: screenWidth * (25.0 / 100.0),
-          child: const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                  style: TextStyle(
-                    decoration: TextDecoration.overline,
-                    decorationColor: Color(0xff5FBFF9),
-                    decorationThickness: 7,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  'Home'),
-              Text(
-                  style: TextStyle(
-                    decorationColor: Color(0xff5FBFF9),
-                    decorationThickness: 7,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  'About Me'),
-              Text(
-                  style: TextStyle(
-                    decorationColor: Color(0xff5FBFF9),
-                    decorationThickness: 7,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  'Portfolio'),
-              Text(
-                  style: TextStyle(
-                    decorationColor: Color(0xff5FBFF9),
-                    decorationThickness: 7,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  'Contact Me'),
-            ],
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          const SizedBox(width: 10,),
+          Container(
+            margin: const EdgeInsets.only(top: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  padding: EdgeInsets.all(10),
+                  child: const Text(
+                      style: TextStyle(
+                        decoration: TextDecoration.overline,
+                        decorationColor: Color(0xff5FBFF9),
+                        decorationThickness: 7,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      'Home'),
+                ),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  child: const Text(
+                      style: TextStyle(
+                        decorationColor: Color(0xff5FBFF9),
+                        decorationThickness: 7,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      'About Me'),
+                ),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  child: Text(
+                      style: TextStyle(
+                        decorationColor: Color(0xff5FBFF9),
+                        decorationThickness: 7,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      'Portfolio'),
+                ),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  child: Text(
+                      style: TextStyle(
+                        decorationColor: Color(0xff5FBFF9),
+                        decorationThickness: 7,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      'Contact Me'),
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

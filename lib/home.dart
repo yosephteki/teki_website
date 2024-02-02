@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:get/state_manager.dart';
 import 'dart:convert';
+
+import 'package:teki_website/controllers/controllers.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -30,133 +37,151 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
 
+    final ControllerBody bodyValue = ControllerBody();
+
     return Scaffold(
-      body: Column(
-        children: [
-          Container(child: isDekstop(context) ? Navigationbar() :null),
-          const Title(),
-          // FutureBuilder(
-          //   future: loadJsonData(),
-          //   builder: (context, snapshot) {
-          //     if (snapshot.connectionState == ConnectionState.waiting) {
-          //       return const CircularProgressIndicator();
-          //     } else if (snapshot.hasError) {
-          //       return const Text("Error loading data");
-          //     } else {
-          //       List<Map<String, dynamic>> jsonList = snapshot.data!;
-          //       return Row(
-          //         mainAxisAlignment: MainAxisAlignment.center,
-          //         children: [
-          //           Container(
-          //             color: Colors.red,
-          //             height: 300,
-          //             width: screenWidth * 0.7, // Set a specific width
-          //             child: Align(
-          //               alignment: Alignment.center,
-          //               child: ListView.builder(
-          //                 scrollDirection: Axis.horizontal,
-          //                 itemCount: jsonList.length,
-          //                 itemBuilder: (context, index) {
-          //                   String title = jsonList[index]["title"];
-          //                   return Container(
-          //                     width: screenWidth * 0.1295,
-          //                     margin: EdgeInsets.all(10),
-          //                     color: Colors.amberAccent,
-          //                     child: Text(title),
-          //                   );
-          //                 },
-          //               ),
-          //             ),
-          //           ),
-          //         ],
-          //       );
-          //     }
-          //   },
-          // ),
-          // const Body(),
-          const SizedBox(
-            height: 20,
-          ),
-          Container(
-            height: 100,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                const Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    CircleAvatar(
-                      backgroundColor: Colors.black,
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Container(child: isDekstop(context) ? Navigationbar() :null),
+            const Title(),
+            // FutureBuilder(
+            //   future: loadJsonData(),
+            //   builder: (context, snapshot) {
+            //     if (snapshot.connectionState == ConnectionState.waiting) {
+            //       return const CircularProgressIndicator();
+            //     } else if (snapshot.hasError) {
+            //       return const Text("Error loading data");
+            //     } else {
+            //       List<Map<String, dynamic>> jsonList = snapshot.data!;
+            //       return Row(
+            //         mainAxisAlignment: MainAxisAlignment.center,
+            //         children: [
+            //           Container(
+            //             color: Colors.red,
+            //             height: 300,
+            //             width: screenWidth * 0.7, // Set a specific width
+            //             child: Align(
+            //               alignment: Alignment.center,
+            //               child: ListView.builder(
+            //                 scrollDirection: Axis.horizontal,
+            //                 itemCount: jsonList.length,
+            //                 itemBuilder: (context, index) {
+            //                   String title = jsonList[index]["title"];
+            //                   return Container(
+            //                     width: screenWidth * 0.1295,
+            //                     margin: EdgeInsets.all(10),
+            //                     color: Colors.amberAccent,
+            //                     child: Text(title),
+            //                   );
+            //                 },
+            //               ),
+            //             ),
+            //           ),
+            //         ],
+            //       );
+            //     }
+            //   },
+            // ),
+            // const Body(),
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              height: 100,
+              width: screenWidth*0.9,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          bodyValue.activeBody.value = "LWCN";
+                          print(bodyValue.activeBody.value);
+                          },
+                        child: CircleAvatar(
+                          backgroundColor: Colors.black,
+                        ),
+                      ),
+                      Text(
+                          softWrap: true,
+                          textAlign: TextAlign.center,
+                          "Lawencon\nInternasional")
+                    ],
+                  ),
+                  // ExperienceSeparator(),
+                  Column(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            // bodyValue.changeBody("XPNS");
+                            bodyValue.activeBody.value = "XPNS";
+                            print(bodyValue.activeBody.value);
+                          },
+                          child: CircleAvatar(
+                            backgroundColor: Colors.black,
+                          ),
+                        ),
+                          Text(
+                              softWrap: true,
+                              textAlign: TextAlign.center,"Xapiens\nTechnology"
+                              ),
+                      ],
                     ),
-                    Text(
-                        softWrap: true,
-                        textAlign: TextAlign.center,
-                        "Lawencon\nInternasional")
-                  ],
-                ),
-                // ExperienceSeparator(),
-                Column(
-                  children: [
-                    GestureDetector(
-                      onTap: () => print("hehehe"),
-                      child: CircleAvatar(
+
+                  const Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      CircleAvatar(
                         backgroundColor: Colors.black,
                       ),
-                    ),
-                    const Text(
-                        softWrap: true,
-                        textAlign: TextAlign.center,
-                        "Xapiens\nTeknologi")
-                  ],
-                ),
-                const Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    CircleAvatar(
-                      backgroundColor: Colors.black,
-                    ),
-                    Text(
-                        softWrap: true,
-                        textAlign: TextAlign.center,
-                        "Bank\nRakyat\nIndonesia")
-                  ],
-                ),
-                const Column(
-                  children: [
-                    CircleAvatar(
-                      backgroundColor: Colors.black,
-                    ),
-                    Text(
-                        softWrap: true,
-                        textAlign: TextAlign.center,
-                        "Bank\nSinarmas")
-                  ],
-                )
-              ],
+                      Text(
+                          softWrap: true,
+                          textAlign: TextAlign.center,
+                          "Bank\nRakyat\nIndonesia")
+                    ],
+                  ),
+                  const Column(
+                    children: [
+                      CircleAvatar(
+                        backgroundColor: Colors.black,
+                      ),
+                      Text(
+                          softWrap: true,
+                          textAlign: TextAlign.center,
+                          "Bank\nSinarmas")
+                    ],
+                  )
+                ],
+              ),
             ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 50),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  '$screenWidth',
-                  style: const TextStyle(fontSize: 70),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                isDekstop(context)
-                    ? const Text(
-                        'Dekstop',
-                        style: TextStyle(fontSize: 70),
-                      )
-                    : const Text("Mobile")
-              ],
-            ),
-          )
-        ],
+            Body(bodyValue : bodyValue),
+            Container(
+              margin: const EdgeInsets.only(top: 50),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    '$screenWidth',
+                    style: const TextStyle(fontSize: 70),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  isDekstop(context)
+                      ? const Text(
+                          'Dekstop',
+                          style: TextStyle(fontSize: 70),
+                        )
+                      : const Text("Mobile")
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -198,71 +223,119 @@ class ExperienceSeparator extends StatelessWidget {
 }
 
 class Body extends StatelessWidget {
-  const Body({
-    super.key,
-  });
+  final ControllerBody bodyValue;
+
+  Body({super.key,required this.bodyValue});
+
+  bool isDekstop(BuildContext context) =>
+      MediaQuery.of(context).size.width >= 600;
+
+  // final ControllerBody bodyValue = ControllerBody();
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          margin: EdgeInsets.only(top: 30),
-          width: 280,
-          height: 350,
-          decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.4), // Shadow color
-                  offset: Offset(0, 10), // Shadow offset (X, Y)
-                  blurRadius: 10, // Blur radius
-                  spreadRadius: 3, // Spread radius
-                ),
-              ],
-              borderRadius: BorderRadius.circular(30),
-              // gradient: const LinearGradient(
-              //     tileMode: TileMode.mirror,
-              //     colors: [Colors.black, Colors.black87]),
-              gradient: const RadialGradient(
-                  radius: 10,
-                  focalRadius: 1000,
-                  tileMode: TileMode.clamp,
-                  center: Alignment.bottomCenter,
-                  colors: [
-                    Colors.black87,
-                    Color(0xff2E2C2F),
-                  ])),
-        ),
-        Container(
-          margin: EdgeInsets.only(top: 30, left: 50),
-          width: 1205,
-          height: 350,
-          decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.4), // Shadow color
-                  offset: Offset(0, 10), // Shadow offset (X, Y)
-                  blurRadius: 10, // Blur radius
-                  spreadRadius: 3, // Spread radius
-                ),
-              ],
-              // color: Colors.black87,
-              borderRadius: BorderRadius.circular(30),
-              // gradient: const LinearGradient(
-              //     tileMode: TileMode.mirror,
-              //     colors: [Colors.black, Colors.black87]),
-              gradient: const RadialGradient(
-                  radius: 10,
-                  focalRadius: 1000,
-                  tileMode: TileMode.clamp,
-                  center: Alignment.bottomCenter,
-                  colors: [
-                    Colors.black87,
-                    Color(0xff2E2C2F),
-                  ])),
-        )
-      ],
+
+    double screenWidth = MediaQuery.of(context).size.width;
+
+    return Container(
+      width: screenWidth*0.8,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container(
+            margin: const EdgeInsets.only(top: 5),
+            width: screenWidth*0.2,
+            height: screenWidth*0.3,
+            decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.4), // Shadow color
+                    offset: const Offset(0, 10), // Shadow offset (X, Y)
+                    blurRadius: 10, // Blur radius
+                    spreadRadius: 3, // Spread radius
+                  ),
+                ],
+                borderRadius: BorderRadius.circular(30),
+                // gradient: const LinearGradient(
+                //     tileMode: TileMode.mirror,
+                //     colors: [Colors.black, Colors.black87]),
+                gradient: const RadialGradient(
+                    radius: 10,
+                    focalRadius: 1000,
+                    tileMode: TileMode.clamp,
+                    center: Alignment.bottomCenter,
+                    colors: [
+                      Colors.black87,
+                      Color(0xff2E2C2F),
+                    ])),
+          ),
+          Obx(() {
+            if (bodyValue.activeBody.value == "LWCN") {
+              return Container(
+                margin: EdgeInsets.only(top: 5),
+                width: screenWidth*0.58,
+                height: screenWidth*0.3,
+                decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.4), // Shadow color
+                        offset: Offset(0, 10), // Shadow offset (X, Y)
+                        blurRadius: 10, // Blur radius
+                        spreadRadius: 3, // Spread radius
+                      ),
+                    ],
+                    borderRadius: BorderRadius.circular(30),
+                    // gradient: const LinearGradient(
+                    //     tileMode: TileMode.mirror,
+                    //     colors: [Colors.black, Colors.black87]),
+                    gradient: const RadialGradient(
+                        radius: 10,
+                        focalRadius: 1000,
+                        tileMode: TileMode.clamp,
+                        center: Alignment.bottomCenter,
+                        colors: [
+                          Colors.black87,
+                          Color(0xff2E2C2F),
+                        ])),child: Text("LWCN"),
+              );
+            } else if (bodyValue.activeBody.value == "XPNS") {
+              return Container(
+                margin: EdgeInsets.only(top: 5),
+                width: screenWidth*0.58,
+                height: screenWidth*0.3,
+                decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.4), // Shadow color
+                        offset: Offset(0, 10), // Shadow offset (X, Y)
+                        blurRadius: 10, // Blur radius
+                        spreadRadius: 3, // Spread radius
+                      ),
+                    ],
+                    borderRadius: BorderRadius.circular(30),
+                    // gradient: const LinearGradient(
+                    //     tileMode: TileMode.mirror,
+                    //     colors: [Colors.black, Colors.black87]),
+                    gradient: const RadialGradient(
+                        radius: 10,
+                        focalRadius: 1000,
+                        tileMode: TileMode.clamp,
+                        center: Alignment.bottomCenter,
+                        colors: [
+                          Colors.black87,
+                          Color(0xff2E2C2F),
+                        ])),child: Text("XPNS"),
+              );
+            }else if (bodyValue.activeBody.value == "BBRI") {
+              return Text('BBRI');
+            }else if (bodyValue.activeBody.value == "BSIM") {
+              return Text('BSIM');
+            } else {
+              return Text("hehe"); // or any default widget when no condition is met
+            }
+          })
+        ],
+      ),
     );
   }
 }

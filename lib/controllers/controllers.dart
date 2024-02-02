@@ -1,11 +1,10 @@
 import 'package:get/get.dart';
 
 class ControllerBody extends GetxController {
-  var activeBody = "BSIM";
+  final RxString activeBody = "BSIM".obs;
 
   void changeBody(String input){
-    activeBody = input;
+    activeBody.value = input;
     update();
-
   }
 }

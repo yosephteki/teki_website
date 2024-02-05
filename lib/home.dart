@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/widgets.dart';
@@ -102,11 +103,11 @@ class _HomeState extends State<Home> {
                           bodyValue.activeBody.value = "LWCN";
                           print(bodyValue.activeBody.value);
                           },
-                        child: CircleAvatar(
+                        child: const CircleAvatar(
                           backgroundColor: Colors.black,
                         ),
                       ),
-                      Text(
+                      const Text(
                           softWrap: true,
                           textAlign: TextAlign.center,
                           "Lawencon\nInternasional")
@@ -296,38 +297,176 @@ class Body extends StatelessWidget {
                         colors: [
                           Colors.black87,
                           Color(0xff2E2C2F),
-                        ])),child: Text("LWCN"),
+                        ])),child: Column(children: [
+                Row(
+                  children: [
+                    Container(margin: const EdgeInsets.only(top: 20,left: 20),
+                      child: const Text(
+                          style: TextStyle(color: Colors.white,fontWeight:FontWeight.bold,fontSize: 15),
+                          "Lawencon Internasional"),
+                    ),
+                    const SizedBox(),
+                  ],
+                ),Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        margin: EdgeInsets.all(20),
+                        child: Text(
+                            style: TextStyle(color: Colors.white),
+                            "Lorem ipsum dolor sit amet, consectetur "
+                                "adipiscing elit, sed do eiusmod "
+                                "tempor incididunt ut labore et "
+                                "dolore magna aliqua. Ut enim ad "
+                                "minim veniam, quis nostrud "
+                                "exercitation ullamco laboris nisi "
+                                "ut aliquip ex ea commodo consequat."
+                                " Duis aute irure dolor in "
+                                "reprehenderit in voluptate velit "
+                                "esse cillum dolore eu fugiat nulla "
+                                "pariatur. Excepteur sint occaecat "
+                                "cupidatat non proident, sunt in "
+                                "culpa qui officia deserunt mollit "
+                                "anim id est laborum."),
+                      ),
+                    )
+
+
+                  ],)
+              ],),
               );
             } else if (bodyValue.activeBody.value == "XPNS") {
               return Container(
-                margin: EdgeInsets.only(top: 5),
+                margin: const EdgeInsets.only(top: 5),
                 width: screenWidth*0.58,
                 height: screenWidth*0.3,
                 decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.4), // Shadow color
-                        offset: Offset(0, 10), // Shadow offset (X, Y)
-                        blurRadius: 10, // Blur radius
-                        spreadRadius: 3, // Spread radius
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.4), // Shadow color
+                      offset: const Offset(0, 10), // Shadow offset (X, Y)
+                      blurRadius: 10, // Blur radius
+                      spreadRadius: 3, // Spread radius
+                    ),
+                  ],
+                  borderRadius: BorderRadius.circular(30),
+                  // gradient: const LinearGradient(
+                  //     tileMode: TileMode.mirror,
+                  //     colors: [Colors.black, Colors.black87]),
+                  gradient: const RadialGradient(
+                    radius: 10,
+                    focalRadius: 1000,
+                    tileMode: TileMode.clamp,
+                    center: Alignment.bottomCenter,
+                    colors: [
+                      Colors.black87,
+                      Color(0xff2E2C2F),
+                    ],)
+                  ,)
+                ,child: Column(children: [
+                Row(
+                  children: [
+                    Container(margin: const EdgeInsets.only(top: 20,left: 20),
+                      child: const Text(
+                          style: TextStyle(color: Colors.white,fontWeight:FontWeight.bold,fontSize: 15),
+                          "Xapiens Technology"),
+                    ),
+                    const SizedBox(),
+                  ],
+                ),Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        margin: EdgeInsets.all(20),
+                        child: Text(
+                            style: TextStyle(color: Colors.white),
+                            "Lorem ipsum dolor sit amet, consectetur "
+                                "adipiscing elit, sed do eiusmod "
+                                "tempor incididunt ut labore et "
+                                "dolore magna aliqua. Ut enim ad "
+                                "minim veniam, quis nostrud "
+                                "exercitation ullamco laboris nisi "
+                                "ut aliquip ex ea commodo consequat."
+                                " Duis aute irure dolor in "
+                                "reprehenderit in voluptate velit "
+                                "esse cillum dolore eu fugiat nulla "
+                                "pariatur. Excepteur sint occaecat "
+                                "cupidatat non proident, sunt in "
+                                "culpa qui officia deserunt mollit "
+                                "anim id est laborum."),
                       ),
-                    ],
-                    borderRadius: BorderRadius.circular(30),
-                    // gradient: const LinearGradient(
-                    //     tileMode: TileMode.mirror,
-                    //     colors: [Colors.black, Colors.black87]),
-                    gradient: const RadialGradient(
-                        radius: 10,
-                        focalRadius: 1000,
-                        tileMode: TileMode.clamp,
-                        center: Alignment.bottomCenter,
-                        colors: [
-                          Colors.black87,
-                          Color(0xff2E2C2F),
-                        ])),child: Text("XPNS"),
+                    )
+
+
+                  ],)
+              ],),
               );
             }else if (bodyValue.activeBody.value == "BBRI") {
-              return Text('BBRI');
+              return Container(
+                margin: const EdgeInsets.only(top: 5),
+                width: screenWidth*0.58,
+                height: screenWidth*0.3,
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.4), // Shadow color
+                      offset: const Offset(0, 10), // Shadow offset (X, Y)
+                      blurRadius: 10, // Blur radius
+                      spreadRadius: 3, // Spread radius
+                    ),
+                  ],
+                  borderRadius: BorderRadius.circular(30),
+                  // gradient: const LinearGradient(
+                  //     tileMode: TileMode.mirror,
+                  //     colors: [Colors.black, Colors.black87]),
+                  gradient: const RadialGradient(
+                    radius: 10,
+                    focalRadius: 1000,
+                    tileMode: TileMode.clamp,
+                    center: Alignment.bottomCenter,
+                    colors: [
+                      Colors.black87,
+                      Color(0xff2E2C2F),
+                    ],)
+                  ,)
+                ,child: Column(children: [
+                Row(
+                  children: [
+                    Container(margin: const EdgeInsets.only(top: 20,left: 20),
+                      child: const Text(
+                          style: TextStyle(color: Colors.white,fontWeight:FontWeight.bold,fontSize: 15),
+                          "Xapiens Technology"),
+                    ),
+                    const SizedBox(),
+                  ],
+                ),Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        margin: EdgeInsets.all(20),
+                        child: Text(
+                            style: TextStyle(color: Colors.white),
+                            "Lorem ipsum dolor sit amet, consectetur "
+                                "adipiscing elit, sed do eiusmod "
+                                "tempor incididunt ut labore et "
+                                "dolore magna aliqua. Ut enim ad "
+                                "minim veniam, quis nostrud "
+                                "exercitation ullamco laboris nisi "
+                                "ut aliquip ex ea commodo consequat."
+                                " Duis aute irure dolor in "
+                                "reprehenderit in voluptate velit "
+                                "esse cillum dolore eu fugiat nulla "
+                                "pariatur. Excepteur sint occaecat "
+                                "cupidatat non proident, sunt in "
+                                "culpa qui officia deserunt mollit "
+                                "anim id est laborum."),
+                      ),
+                    )
+
+
+                  ],)
+              ],),
+              );
             }else if (bodyValue.activeBody.value == "BSIM") {
               return Text('BSIM');
             } else {
@@ -393,7 +532,7 @@ class Title extends StatelessWidget {
                                 child: isDekstop(context)
                                     ? Text(
                                         style: TextStyle(
-                                            color: Color(0xff5FBFF9),
+                                            color: Colors.white,
                                             fontSize: screenWidth * 0.04,
                                             fontWeight: FontWeight.w300),
                                         "Yosep Teki Nugroho")
@@ -425,7 +564,7 @@ class Title extends StatelessWidget {
                             Container(
                               child: Text(
                                   style: TextStyle(
-                                      color: Color(0xff5FBFF9),
+                                      color: Colors.white,
                                       fontSize: screenWidth * 0.018,
                                       // letterSpacing: screenWidth * 0.01,
                                       fontWeight: FontWeight.normal),
